@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basic-page',
@@ -7,12 +7,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styles: ``
 })
 export class BasicPageComponent implements OnInit {
-
-  // public myForm: FormGroup= new FormGroup({
-  //   name: new FormControl("",),
-  //   price: new FormControl("", ),
-  //   inStorage: new FormControl("", ),
-  // })
 
   public myForm: FormGroup = this.fb.group({
     name: ["", [Validators.required, Validators.minLength(3)]],
@@ -25,7 +19,7 @@ export class BasicPageComponent implements OnInit {
     this.myForm.reset()
   }
 
-  isVlidField(field: string): boolean | null {
+  isInValidField(field: string): boolean | null {
     return this.myForm.controls[field].errors && this.myForm.controls[field].touched
   }
 
